@@ -1,4 +1,4 @@
-# Taming Big Data with Apach Spark
+# Taming Big Data with Apache Spark
 
 ## Description
 
