@@ -20,9 +20,10 @@ git clone git@github.com:chithra-bhat/udemy-bigdata-with-spark.git
 cd udemy-bigdata-with-spark
 ```
 
-**3. Install Apache Spark**: Next, install Apache Spark by following the detailed installation instructions provided at [Sundog Education - Spark Python](https://www.sundog-education.com/spark-python/).
+**3. Install Apache Spark**: 
+Next, install Apache Spark by following the detailed installation instructions provided at [Sundog Education - Spark Python (https://www.sundog-education.com/spark-python/).
 
-**4. Running Spark Code**: To execute Spark programs, use the spark-submit command. For example, to run a file named ratings-counter.py, use:
+**4. Running Spark Code**: To execute Spark programs, use the `spark-submit` command. For example, to run a file named ratings-counter.py, use:
 
 ```
 spark-submit ratings-counter.py
