@@ -9,8 +9,7 @@ Learn to harness the power of Apache Spark and PySpark to analyze and process bi
 Follow these steps to set up your environment and start running Spark code:
 
 1. Clone the Repository
-
-To begin, clone the repository to your local machine using SSH:
+To begin, clone this repository to your local machine using SSH:
 
 ```
 git clone git@github.com:chithra-bhat/udemy-bigdata-with-spark.git
@@ -23,7 +22,7 @@ Once the repository is cloned, change to the directory where it was cloned:
 cd udemy-bigdata-with-spark
 ```
 
-3. Install Apache Spark
+3. Install Apache Spark 
 Next, install Apache Spark by following the detailed installation instructions provided at [Sundog Education - Spark Python](https://www.sundog-education.com/spark-python/).
 
 4. Running Spark Code
