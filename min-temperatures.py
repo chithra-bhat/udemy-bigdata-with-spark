@@ -1,14 +1,15 @@
 from pyspark import SparkConf, SparkContext
 
-conf = SparkConf().setMaster("local").setAppName("MinTemperatures")
-sc = SparkContext(conf = conf)
 
 def parseLines(line):
-	info = line.split(",")
-	stationID = info[0]
-	celsiusTemp = float(info[3]) * 0.1 * (9/5) + 32
-	return (stationID, celsiusTemp)
+    info = line.split(",")
+    stationID = info[0]
+    celsiusTemp = float(info[3]) * 0.1 * (9/5) + 32
+    return (stationID, celsiusTemp)
 
+
+conf = SparkConf().setMaster("local").setAppName("MinTemperatures")
+sc = SparkContext(conf=conf)
 
 lines = sc.textFile("data/1800.csv")
 
@@ -22,4 +23,4 @@ result = minTempByStation.collect()
 
 print("\nStation ID \t Min Temperature in F")
 for key, val in result:
-	print(f"{key} \t {val}")
+    print(f"{key} \t {val}")
