@@ -5,20 +5,22 @@ conf = SparkConf().setMaster("local").setAppName("WordCount")
 sc = SparkContext(conf=conf)
 
 
-def stripSpecialChars(word):
-    cleanedWord = re.sub(r'^[^\w]+|[^\w]+$', '', word)
-    return cleanedWord
+def normalizeWords(text):
+    return re.compile(r'\W+', re.UNICODE).split(text.lower())
 
 
 data = sc.textFile("data/book.txt")
 
-words = data.flatMap(lambda x: x.lower().split(" ")).map(stripSpecialChars)
+words = data.flatMap(normalizeWords)
 
-wordCounts = words.map(lambda x: (x, 1)).reduceByKey(lambda x, y: x + y).sortByKey()
+wordCounts = words.map(lambda x: (x, 1)).reduceByKey(lambda x, y: x + y)
 
-result = wordCounts.collect()
+sortedWordCounts = wordCounts.map(lambda x: (x[1], x[0])) \
+    .sortByKey(ascending=False)
 
-for word, count in result:
-    cleanWord = word.encode('ascii', 'ignore').decode() 
-    if cleanWord:
-        print(f"{cleanWord} : {count}")
+result = sortedWordCounts.collect()
+
+for count, word in result:
+    word = word.encode('ascii', 'ignore')
+    if word:
+        print(f"{word.decode()} : {count}")
